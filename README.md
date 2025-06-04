@@ -1,12 +1,68 @@
-# React + Vite
+# React + Vite Todo List App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a simple Todo List Application built with React using Vite as the build tool. It serves as a great example of how to get started with React projects for beginners.
 
-Currently, two official plugins are available:
+🚀 Project Overview
+This Todo List app allows users to:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Add tasks
 
-## Expanding the ESLint configuration
+Read or view the task list
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Edit tasks
+
+Delete tasks
+
+All of these features are implemented using React hooks and component-based architecture, making the code clean, modular, and easy to understand.
+
+🔧 Technologies Used
+React (with functional components)
+
+Vite (for fast build and development)
+
+React Hooks (useState)
+
+SweetAlert2 (for nice modals)
+
+🧠 Key Concepts
+Component-based development: Each logical section of the app is divided into reusable components.
+
+React Hooks: We use useState for managing form inputs and the list of todos.
+
+CRUD Operations:
+
+Create a task using an input field
+
+Read the full list of tasks displayed on the screen
+
+Update/Edit an existing task using a modal input
+
+Delete a task with confirmation
+
+💡 Getting Started
+1. Install dependencies:
+bash
+Copy
+Edit
+npm install
+2. Run the development server:
+bash
+Copy
+Edit
+npm run dev
+3. Build for production:
+bash
+Copy
+Edit
+npm run build
+🔗 Vite + React Template Info
+This project uses the official Vite + React template with Hot Module Replacement (HMR) and ESLint configured.
+
+You can learn more about the plugins here:
+
+@vitejs/plugin-react (Babel)
+
+@vitejs/plugin-react-swc (SWC)
+
+If you're building a production-ready app, we recommend using TypeScript. See the React + TypeScript Template for a more advanced setup.
+
