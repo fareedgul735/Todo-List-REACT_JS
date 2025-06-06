@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./TodoList.css";
 import Swal from "sweetalert2";
 
@@ -10,6 +10,7 @@ const TodoList = ({ theme }) => {
     let { value } = e.target;
     setAddValue(value);
   };
+
 
   const handlerBtn = (e) => {
     e.preventDefault();
@@ -24,6 +25,16 @@ const TodoList = ({ theme }) => {
     setTodoList([...todoList, newUser]);
     setAddValue("");
   };
+
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem("todos")) || [];
+    setTodoList(storedData);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todoList));
+  }, [todoList]);
+
 
   const taskDeleted = async (id) => {
     const result = await Swal.fire({
@@ -40,6 +51,7 @@ const TodoList = ({ theme }) => {
       );
     }
   };
+
 
   const editTask = async (data) => {
     let updateValue = await Swal.fire({
