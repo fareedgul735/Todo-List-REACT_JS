@@ -5,17 +5,17 @@ import Swal from "sweetalert2";
 const TodoList = ({ theme }) => {
   const [addValue, setAddValue] = useState("");
   const [todoList, setTodoList] = useState([]);
+  const [error, setError] = useState(false);
 
   const handlerInput = (e) => {
     let { value } = e.target;
     setAddValue(value);
   };
 
-
   const handlerBtn = (e) => {
     e.preventDefault();
     if (addValue.trim() === "") {
-      alert("Please enter a valid task");
+      setError(true);
       return;
     }
     const newUser = {
@@ -35,7 +35,6 @@ const TodoList = ({ theme }) => {
     localStorage.setItem("todos", JSON.stringify(todoList));
   }, [todoList]);
 
-
   const taskDeleted = async (id) => {
     const result = await Swal.fire({
       title: "Are you sure?",
@@ -43,15 +42,14 @@ const TodoList = ({ theme }) => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
-    })
+      confirmButtonText: "Yes, delete it!",
+    });
     if (result.isConfirmed) {
       setTodoList((prevTodoList) =>
         prevTodoList?.filter((item) => item?.id !== id)
       );
     }
   };
-
 
   const editTask = async (data) => {
     let updateValue = await Swal.fire({
@@ -65,15 +63,15 @@ const TodoList = ({ theme }) => {
       background: "#000",
       color: "#fff",
       inputAttributes: {
-        autocapitalize: "off"
+        autocapitalize: "off",
       },
-    })
+    });
     if (updateValue.isConfirmed && updateValue.value.trim() !== "") {
       setTodoList((prevTodoList) =>
-        prevTodoList.map((todo) => (
+        prevTodoList.map((todo) =>
           todo.id === data.id ? { ...todo, task: updateValue.value } : todo
-        ))
-      )
+        )
+      );
     }
   };
 
@@ -87,9 +85,11 @@ const TodoList = ({ theme }) => {
             name="addValue"
             id="task-input"
             value={addValue}
+            className={error && "error"}
             onChange={handlerInput}
             placeholder="Enter your task..."
           />
+
           <button
             className={theme ? "dark-clr" : "light-clr"}
             onClick={handlerBtn}
@@ -97,6 +97,11 @@ const TodoList = ({ theme }) => {
             +
           </button>
         </div>
+        {error && (
+          <p style={{ color: "red", fontSize: "14px", marginTop: "8px" }}>
+            field are required!
+          </p>
+        )}
       </div>
 
       <div className="list">

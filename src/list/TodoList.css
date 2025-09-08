@@ -140,6 +140,9 @@ body {
   border: none;
   transition: background 0.3s;
 }
+.error-field {
+  border: 1px solid red;
+}
 
 .edit-btn {
   background-color: #40ff2e;
@@ -150,7 +153,9 @@ body {
   background-color: #ff0000;
   cursor: pointer;
 }
-
+.error {
+  border: 1px solid red !important;
+}
 
 .edit-btn:hover {
   background-color: #00ff04;
